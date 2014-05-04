@@ -6,6 +6,24 @@
         <title>{{ page.title }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        {% if page.title %}
+        <meta property="og:title" content="{{ page.title }}"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:url" content="http://jck.im{{ page.url }}"/>
+        <meta property="og:site_name" content="{{ site.name }}"/>
+        {% else %}
+        <meta property="og:title" content="{{ site.name }}"/>
+        <meta property="og:type" content="blog"/>
+        <meta property="og:url" content="http://jck.im/"/>
+        <meta property="og:site_name" content="{{ site.name }}"/>
+        {% endif %}
+
+        {% if page.description %}
+        <meta content="{{ page.description }}" property="og:description">
+        {% else %}
+        <meta content="{{ site.description }}" property="og:description">
+        {% endif %}
+
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
@@ -22,7 +40,7 @@
             {{ content }}
             <hr />
             <address class="text-info">
-                <span class="glyphicon glyphicon-user"></span> <a href="/">{{ site.name }}</a><br />
+                <span class="glyphicon glyphicon-user"></span> <a href="/">JCKim</a><br />
                 <span class="glyphicon glyphicon-briefcase"></span> Programmer<br />
                 <span class="glyphicon glyphicon-envelope"></span> <a href="mailto:shinvee@gmail.com">shinvee@gmail.com</a><br />
                 <span class="glyphicon glyphicon-home"></span> <a href="https://github.com/shinvee">http://github.com/shinvee</a>
