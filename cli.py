@@ -42,7 +42,13 @@ def create_block(message):
     with open('index.html', 'w') as index:
         print(f"""
             <html>
-            <meta http-equiv="refresh" content="0; url=blocks/{block_hash}"></meta>
+            <head>
+            <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+            </head>
+            <body>
+            <article></article>
+            <script>$('article').load('blocks/{block_hash}')</script>
+            </body>
             </html>
         """, file=index)
 

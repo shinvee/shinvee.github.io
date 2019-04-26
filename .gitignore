@@ -1,1 +1,4 @@
+.direnv
+.envrc
+__pycache__
 _site
