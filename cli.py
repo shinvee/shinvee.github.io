@@ -4,6 +4,7 @@ import os
 
 import click
 import frontmatter
+from jinja2 import Template
 
 
 def get_last_block():
@@ -39,18 +40,11 @@ def create_block(message):
         print(data, file=block_file)
         print(data)
 
-    with open('index.html', 'w') as index:
-        print(f"""
-            <html>
-            <head>
-            <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
-            </head>
-            <body>
-            <article></article>
-            <script>$('article').load('blocks/{block_hash}')</script>
-            </body>
-            </html>
-        """, file=index)
+    with open('index.html.jinja2') as file_:
+        template = Template(file_.read())
+        with open('index.html', 'w') as index:
+            print(template.render(block_hash=block_hash), file=index)
+
 
 if __name__ == '__main__':
     create_block()
