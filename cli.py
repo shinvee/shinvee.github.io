@@ -21,7 +21,9 @@ def get_last_block():
 
 
 @click.command()
-@click.option('--message', help='message to write in a block', prompt='Message')
+@click.option('--message', '-m',
+              help='message to write in a block',
+              prompt='Message')
 def create_block(message):
     meta = dict()
     last_block = get_last_block()
