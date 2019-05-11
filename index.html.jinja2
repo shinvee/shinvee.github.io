@@ -29,8 +29,9 @@
   <article></article>
   <script>
     var converter = new showdown.Converter();
-    $('article').load('blocks/{{block_hash}}');
-    $('article').html(converter.makeHtml($('article').html()));
+    $('article').load('blocks/{{block_hash}}', function() {
+      $('article').html(converter.makeHtml($('article').html()));
+    });
   </script>
 </body>
 </html>

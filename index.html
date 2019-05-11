@@ -29,8 +29,9 @@
   <article></article>
   <script>
     var converter = new showdown.Converter();
-    $('article').load('blocks/00c0f94434d3ca743cf27ef45e7376181c3c86b6a8f3ac4db61fa42319371603');
-    $('article').html(converter.makeHtml($('article').html()));
+    $('article').load('blocks/0022dae7af0fcca6b549a1832b6d8e1f5079f588882f35022025700fbd36cc73', function() {
+      $('article').html(converter.makeHtml($('article').html()));
+    });
   </script>
 </body>
 </html>
