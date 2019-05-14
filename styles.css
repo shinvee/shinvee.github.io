@@ -9,9 +9,15 @@ article {
 	vertical-align: middle;
 	font-weight: 500;
 	color: #666666;
+	min-width: 300px;
 }
 article strong {
 	font-weight: 900;
 	color: #333333;
 }
 
+@media (max-width: 640px) {
+	article {
+		font-size: 2rem;
+	}
+}
