@@ -19,5 +19,6 @@ article strong {
 @media (max-width: 640px) {
 	article {
 		font-size: 2rem;
+		line-height: 3rem;
 	}
 }
