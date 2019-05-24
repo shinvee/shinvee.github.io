@@ -25,23 +25,24 @@ def get_last_block(block_path='blocks'):
               help='message to write in a block',
               prompt='Message')
 def create_block(message):
-    meta = dict()
+    block = frontmatter.loads('')
     block_path = 'blocks'
     last_block = get_last_block(block_path)
     if last_block:
-        meta['prev'] = last_block
-    meta['created_at'] = datetime.datetime.now().isoformat()
-    meta['nonce'] = 0
+        block['prev'] = last_block
+    block['created_at'] = datetime.datetime.now().isoformat()
+    block['nonce'] = 0
+    block.content = message
     while True:
-        meta['nonce'] += 1
-        meta_string = '\n'.join([f'{k}: {v}' for k, v in meta.items()])
-        data = f'---\n{meta_string}\n---\n{message}'
-        block_hash = hashlib.sha256(data.encode()).hexdigest()
+        block['nonce'] += 1
+        block_hash = hashlib.sha256(
+            frontmatter.dumps(block).encode()
+        ).hexdigest()
         if block_hash[:2] == '00':
             break
     with open(f'{block_path}/{block_hash}', 'w') as block_file:
-        print(data, file=block_file)
-        print(data)
+        print(frontmatter.dumps(block), file=block_file)
+        print(frontmatter.dumps(block))
 
     with open('index.html.jinja2') as file_:
         template = Template(file_.read())
