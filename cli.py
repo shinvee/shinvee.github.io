@@ -42,8 +42,10 @@ def create_block(message, block_path):
 @click.option('--message', '-m',
               help='message to write in a block',
               prompt='Message')
-def create_block_command(message):
-    block_path = 'blocks'
+@click.option('--block-path', '-p',
+              default='blocks',
+              help='block path')
+def create_block_command(message, block_path):
     block, block_hash = create_block(message, block_path)
     with open(f'{block_path}/{block_hash}', 'w') as block_file:
         print(frontmatter.dumps(block), file=block_file)
