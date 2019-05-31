@@ -1,3 +1,5 @@
+import os
+
 from cli import get_last_block_hash, create_block, create_block_command
 from click.testing import CliRunner
 
@@ -5,6 +7,8 @@ from click.testing import CliRunner
 def test_get_last_block_hash():
     last = get_last_block_hash('test_blocks')
     assert last == '00517baba6aed0172711aa9d6d28096378ae1a847e22a8c2829fc0a6523830ab' # noqa
+    os.mkdir('new_test_blocks');
+    assert not get_last_block_hash('new_test_blocks')
 
 
 def test_create_blocvk():
