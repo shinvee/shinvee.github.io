@@ -7,8 +7,11 @@ from click.testing import CliRunner
 def test_get_last_block_hash():
     last = get_last_block_hash('test_blocks')
     assert last == '00517baba6aed0172711aa9d6d28096378ae1a847e22a8c2829fc0a6523830ab' # noqa
-    os.mkdir('new_test_blocks')
-    assert not get_last_block_hash('new_test_blocks')
+
+    new_dir_path = 'new_test_blocks'
+    os.mkdir(new_dir_path)
+    assert not get_last_block_hash(new_dir_path)
+    os.rmdir(new_dir_path)
 
 
 def test_create_blocvk():
