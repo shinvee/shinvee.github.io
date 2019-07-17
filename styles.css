@@ -3,6 +3,7 @@ article {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	font-family: "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", Dotum, 돋움, sans-serif;
 	font-size: 3rem;
 	line-height: 4rem;
 	text-align: center;
