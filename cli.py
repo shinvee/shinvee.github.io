@@ -4,7 +4,27 @@ import os
 
 import click
 import frontmatter
+import requests
 from jinja2 import Template
+
+
+def spell_check(text):
+    cookies = {'ruleMode': 'weak'}
+    headers = {
+        'Origin': 'https://speller.cs.pusan.ac.kr',
+    }
+    data = {
+      'text1': text
+    }
+    response = requests.post(
+        'https://speller.cs.pusan.ac.kr/results',
+        headers=headers, cookies=cookies, data=data
+    )
+
+    if '맞춤법과 문법 오류를 찾지' in response.text:
+        return None
+    else:
+        return response.text
 
 
 def get_last_block_hash(block_path):
@@ -46,6 +66,11 @@ def create_block(message, block_path):
               default='blocks',
               help='block path')
 def create_block_command(message, block_path):
+    spell_check_result = spell_check(message)
+    if spell_check_result:
+        print(spell_check_result)
+        exit(1)
+
     block, block_hash = create_block(message, block_path)
     with open(f'{block_path}/{block_hash}', 'w') as block_file:
         print(frontmatter.dumps(block), file=block_file)
