@@ -27,7 +27,7 @@ def spell_check(text):
     if '맞춤법과 문법 오류를 찾지' in response.text:
         return None
     else:
-        regex = re.compile("data = (\[[^;].*);")
+        regex = re.compile(r"data = (\[[^;].*);")
         mo = regex.search(response.text)
         return json.loads(mo.groups()[0])
 
