@@ -1,6 +1,9 @@
 import datetime
+import json
 import hashlib
 import os
+import re
+import pprint
 
 import click
 import frontmatter
@@ -24,7 +27,9 @@ def spell_check(text):
     if '맞춤법과 문법 오류를 찾지' in response.text:
         return None
     else:
-        return response.text
+        regex = re.compile("data = (\[[^;].*);")
+        mo = regex.search(response.text)
+        return json.loads(mo.groups()[0])
 
 
 def get_last_block_hash(block_path):
@@ -68,7 +73,7 @@ def create_block(message, block_path):
 def create_block_command(message, block_path):
     spell_check_result = spell_check(message)
     if spell_check_result:
-        print(spell_check_result)
+        pprint.pprint(spell_check_result)
         exit(1)
 
     block, block_hash = create_block(message, block_path)
