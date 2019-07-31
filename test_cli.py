@@ -1,6 +1,6 @@
 import os
 
-from cli import get_last_block_hash, create_block, create_block_command
+from cli import get_last_block_hash, create_block, create_block_command, check_spell
 from click.testing import CliRunner
 
 
@@ -28,3 +28,7 @@ def test_cli():
     )
     assert result.exit_code == 0
     assert result.output.find('test') > 0
+
+
+def test_spell_checker():
+    assert not check_spell('안녕하세요.')

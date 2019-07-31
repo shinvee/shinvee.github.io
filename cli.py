@@ -11,7 +11,7 @@ import requests
 from jinja2 import Template
 
 
-def spell_check(text):
+def check_spell(text):
     cookies = {'ruleMode': 'weak'}
     headers = {
         'Origin': 'https://speller.cs.pusan.ac.kr',
@@ -71,7 +71,7 @@ def create_block(message, block_path):
               default='blocks',
               help='block path')
 def create_block_command(message, block_path):
-    spell_check_result = spell_check(message)
+    spell_check_result = check_spell(message)
     if spell_check_result:
         pprint.pprint(spell_check_result)
         exit(1)
