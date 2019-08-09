@@ -1,6 +1,9 @@
 import os
 
-from cli import get_last_block_hash, create_block, create_block_command, check_spell
+from cli import (get_last_block_hash,
+                 create_block,
+                 create_block_command,
+                 check_spell)
 from click.testing import CliRunner
 
 
