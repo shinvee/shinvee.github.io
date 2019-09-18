@@ -35,3 +35,4 @@ def test_cli():
 
 def test_spell_checker():
     assert not check_spell('안녕하세요.')
+    assert len(check_spell('안녕 하세요.')) > 0
