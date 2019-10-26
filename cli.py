@@ -14,13 +14,13 @@ from jinja2 import Template
 def check_spell(text):
     cookies = {'ruleMode': 'weak'}
     headers = {
-        'Origin': 'https://speller.cs.pusan.ac.kr',
+        'Origin': 'http://speller.cs.pusan.ac.kr',
     }
     data = {
       'text1': text
     }
     response = requests.post(
-        'https://speller.cs.pusan.ac.kr/results',
+        'http://speller.cs.pusan.ac.kr/results',
         headers=headers, cookies=cookies, data=data
     )
 
