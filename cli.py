@@ -67,14 +67,21 @@ def create_block(message, block_path):
 @click.option('--message', '-m',
               help='message to write in a block',
               prompt='Message')
+@click.option('--skip-spell-check', '-s',
+              help='skip spell check',
+              is_flag=True,
+              prompt='Message')
 @click.option('--block-path', '-p',
               default='blocks',
               help='block path')
-def create_block_command(message, block_path):
-    spell_check_result = check_spell(message)
-    if spell_check_result:
-        pprint.pprint(spell_check_result)
-        exit(1)
+def create_block_command(message,
+                         skip_spell_check,
+                         block_path):
+    if not skip_spell_check:
+        spell_check_result = check_spell(message)
+        if spell_check_result:
+            pprint.pprint(spell_check_result)
+            exit(1)
 
     block, block_hash = create_block(message, block_path)
     with open(f'{block_path}/{block_hash}', 'w') as block_file:
