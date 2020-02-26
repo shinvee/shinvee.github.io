@@ -1,4 +1,4 @@
-article {
+main {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -12,13 +12,13 @@ article {
 	color: #666666;
 	min-width: 300px;
 }
-article strong {
+main strong {
 	font-weight: 900;
 	color: #333333;
 }
 
 @media (max-width: 640px) {
-	article {
+	main {
 		font-size: 2rem;
 		line-height: 3rem;
 	}

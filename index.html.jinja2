@@ -9,11 +9,11 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-  <article></article>
+  <main></main>
   <script>
     var converter = new showdown.Converter();
-    $('article').load('blocks/{{block_hash}}', function() {
-      $('article').html(converter.makeHtml($('article').html()));
+    $('main').load('blocks/{{block_hash}}', function() {
+      $('main').html(converter.makeHtml($('article').html()));
     });
   </script>
 </body>
