@@ -70,7 +70,7 @@ def create_block(message, block_path):
 @click.option('--skip-spell-check', '-s',
               help='skip spell check',
               is_flag=True,
-              prompt='Message')
+              prompt='Skip spell check?')
 @click.option('--block-path', '-p',
               default='blocks',
               help='block path')
