@@ -16,7 +16,16 @@ main strong {
 	font-weight: 900;
 	color: #333333;
 }
-
+.dark {
+	background-color: #666666;
+}
+.dark main {
+	background-color: #666666;
+	color: #ccc;
+}
+.dark main strong {
+	color: #aaa;
+}
 @media (max-width: 640px) {
 	main {
 		font-size: 2rem;

@@ -8,11 +8,11 @@
   <script src="//code.jquery.com/jquery-3.4.0.min.js"></script>
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-<body>
+<body class="dark">
   <main></main>
   <script>
     var converter = new showdown.Converter();
-    $('main').load('blocks/0026b68e8326123fdab74436855af3c36b363d03ce0abc604faa255a53ca2622', function() {
+    $('main').load('blocks/007004c37b30026cba23bf2b7eae03a2188f537b9366c21f7c3ec045070f6b99', function() {
       $('main').html(converter.makeHtml($('article').html()));
     });
   </script>
